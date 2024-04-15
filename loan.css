@@ -1,0 +1,49 @@
+body {
+    font-family: 'Trebuchet MS', Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    height: 100vh; /* Full viewport height */
+    display: flex;
+    align-items: center; /* Centers content vertically */
+    justify-content: center; /* Centers content horizontally */
+    background: url('bg.jpg') no-repeat center center fixed; 
+    background-size: cover;
+}
+
+h1 {
+    font-size: 24px; /* Adjusted for better visibility on different devices */
+    color: white;
+    text-align: center; /* Centers the header text */
+    margin-bottom: 20px; /* Spacing for visual appeal */
+}
+
+.calculator {
+    width: 400px;
+    height: auto; /* Height adjusted to auto for content flexibility */
+    background-color: rgba(0, 0, 0, 0.8); /* Semi-transparent black */
+    position: relative; /* Changed to relative for flexbox centering */
+    padding: 20px; /* Uniform padding for a cleaner layout */
+    border-radius: 20px; /* Smoother radius */
+    color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Soft shadow for depth */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Aligns children (inputs and labels) centrally */
+}
+
+input {
+    padding: 10px;
+    width: 90%; /* Adjusted to use more of the available width */
+    margin-top: 10px; /* Uniform spacing */
+    background-color: #f9f9f9; /* Light background for the input */
+    border: 1px solid #ccc; /* Subtle border */
+    border-radius: 4px; /* Rounded corners */
+    outline: none; /* Remove outline */
+    color: #333; /* Dark text for readability */
+}
+
+h2 {
+    text-align: center; /* Center align the result text */
+    margin-top: 20px;
+    color: limegreen; /* A pop of color for the result */
+}
