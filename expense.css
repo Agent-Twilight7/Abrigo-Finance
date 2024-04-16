@@ -1,92 +1,112 @@
 /* style.css */
 body { 
-	font-family: Arial, sans-serif; 
-	margin: 0; 
-	padding: 0;
-	height: 100vh;  /* Full viewport height */
-	display: flex;
-	align-items: center; /* Centers container vertically */
-	justify-content: center; /* Centers container horizontally */
-	background: url('bg.jpg ') no-repeat center center fixed; 
-	background-size: cover;
+    font-family: Arial, sans-serif; 
+    margin: 0; 
+    padding: 0;
+    height: 100vh;  /* Full viewport height */
+    display: flex;
+    align-items: center; /* Centers container vertically */
+    justify-content: center; /* Centers container horizontally */
+    background: url('bg.jpg') no-repeat center center fixed; 
+    background-size: cover;
 }
 
 .container { 
-	max-width: 800px; 
-	background-color: rgba(0, 0, 0, 0.8); /* Optional: make background slightly transparent to see the image */
-	padding: 20px; 
-	border-radius: 8px; 
-	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+    width: 90%; /* Adjust width to allow more space */
+    max-width: 1200px; /* Increased max-width */
+    background-color: rgba(0, 0, 0, 0.8); /* Optional: make background slightly transparent to see the image */
+    padding: 20px; 
+    border-radius: 8px; 
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 h1 { 
-	text-align: center; 
-	margin-bottom: 20px; 
-    color: white    ;
+    text-align: center; 
+    margin-bottom: 20px; 
+    color: white;
 } 
 
 form { 
-	display: flex; 
-	justify-content: center; 
-	margin-bottom: 20px; 
+    display: flex; 
+    justify-content: space-around; 
+    width: 100%;
+    margin-bottom: 20px; 
 } 
 
 input[type="text"], 
 input[type="number"] { 
-	padding: 10px; 
-	border: 1px solid #ccc; 
-	border-radius: 4px; 
-	outline: none; 
+    padding: 10px;
+    border: 1px solid #ccc; 
+    border-radius: 4px; 
+    outline: none; 
+    width: 40%; /* Ensure uniform width */
 } 
 
 input[type="text"]::placeholder, 
 input[type="number"]::placeholder { 
-	color: #999; 
+    color: #999; 
 } 
 
 button { 
-	padding: 10px 20px; 
-	background-color: #4caf50; 
-	color: white; 
-	border: none; 
-	border-radius: 4px; 
-	cursor: pointer; 
+    padding: 10px 20px; 
+    background-color: #4caf50; 
+    color: white; 
+    border: none; 
+    border-radius: 4px; 
+    cursor: pointer; 
+    flex-shrink: 0; /* Prevent button from shrinking */
 } 
 
 button:hover { 
-	background-color: #45a049; 
+    background-color: #45a049; 
 } 
+
+.expense-table, #expenseChart { 
+    width: 100%; 
+    margin-top: 20px;
+}
 
 .expense-table { 
-	border: 1px solid #ddd; 
-	border-radius: 8px; 
-	overflow: hidden; 
-	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
-} 
+    border: 1px solid #ddd; 
+    border-radius: 8px; 
+    overflow: hidden; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+    flex-grow: 1;
+}
 
 table { 
-	width: 100%; 
-	border-collapse: collapse; 
+    width: 100%; 
+    border-collapse: collapse; 
 } 
 
 thead th { 
-	background-color: #f2f2f2; 
-	padding: 10px; 
-	text-align: left; 
+    background-color: #f2f2f2; 
+    padding: 10px; 
+    text-align: left; 
 } 
 
 tbody td { 
-	padding: 10px; 
-	border-top: 1px solid #ddd; 
+    padding: 10px; 
+    border-top: 1px solid #ddd; 
+	color: white;
 } 
 
 .delete-btn { 
-	color: red; 
-	cursor: pointer; 
+    color: red; 
+    cursor: pointer; 
 } 
 
 .total-amount { 
-	padding: 10px; 
-	text-align: right; 
-	background-color: #f2f2f2; 
+    padding: 10px; 
+    text-align: right; 
+    background-color: #f2f2f2; 
+}
+
+#expenseChart {
+    margin-top: 20px;
+    width: 100%;
+    max-height: 400px; /* Limit chart height */
 }
