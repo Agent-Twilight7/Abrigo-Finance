@@ -194,10 +194,52 @@ nav {
     justify-content: center;
     text-align: center;
     align-items: center;
+    width: 2500px;  
+}
+.content-2{
+    height: 400px;
+    padding: 0px;
+    overflow-y:auto ;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
     width: 2500px;
-   
-    
+}
+.content-2 .button {
+    background: linear-gradient(135deg, #0b3614, #111412);
+    color: white;
+    border: none;
+    height: 200px;
+    width: 500px;
+    border-radius: 19px;
+    margin-bottom: 55px;
+    margin-left: 490px;
+    margin-top: 50px;
+    font-size: 30px;
+    font-family: 'Arial', sans-serif;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.5s cubic-bezier(0.22, 0.61, 0.36, 1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
 
+.content-2 .button:hover {
+    opacity: 0.85;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+    transform: translateY(-16px);
+}
+
+.content-2 .button:active {
+    background-color: #9529b3;  
+    transform: translateY(16px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
+}
+
+.content-2::-webkit-scrollbar {
+    display: none;
 }
 .tabhead{
     height: 130px;
