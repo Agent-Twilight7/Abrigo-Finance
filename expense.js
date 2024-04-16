@@ -1,105 +1,100 @@
-// script.js 
-// Get form, expense list, and total amount elements 
-const expenseForm = 
-	document.getElementById("expense-form"); 
-const expenseList = 
-	document.getElementById("expense-list"); 
-const totalAmountElement = 
-	document.getElementById("total-amount"); 
+// Script.js
+const expenseForm = document.getElementById("expense-form");
+const expenseList = document.getElementById("expense-list");
+const totalAmountElement = document.getElementById("total-amount");
+let expenses = JSON.parse(localStorage.getItem("expenses")) || [];
+let expenseChart = null; // Declare chart globally to update later
 
-// Initialize expenses array from localStorage 
-let expenses = 
-	JSON.parse(localStorage.getItem("expenses")) || []; 
+function renderExpenses() {
+    expenseList.innerHTML = "";
+    let totalAmount = 0;
+    let chartLabels = [];
+    let chartData = [];
 
-// Function to render expenses in tabular form 
-function renderExpenses() { 
+    for (let i = 0; i < expenses.length; i++) {
+        const expense = expenses[i];
+        const expenseRow = document.createElement("tr");
+        expenseRow.innerHTML = `
+            <td>${expense.name}</td>
+            <td>$${expense.amount}</td>
+            <td class="delete-btn" data-id="${i}">Delete</td>
+        `;
+        expenseList.appendChild(expenseRow);
+        totalAmount += expense.amount;
+        chartLabels.push(expense.name);
+        chartData.push(expense.amount);
+    }
+    totalAmountElement.textContent = totalAmount.toFixed(2);
+    localStorage.setItem("expenses", JSON.stringify(expenses));
+    updateChart(chartLabels, chartData);
+}
 
-	// Clear expense list 
-	expenseList.innerHTML = ""; 
+function addExpense(event) {
+    event.preventDefault();
+    const expenseNameInput = document.getElementById("expense-name");
+    const expenseAmountInput = document.getElementById("expense-amount");
+    const expenseName = expenseNameInput.value;
+    const expenseAmount = parseFloat(expenseAmountInput.value);
 
-	// Initialize total amount 
-	let totalAmount = 0; 
+    expenseNameInput.value = "";
+    expenseAmountInput.value = "";
 
-	// Loop through expenses array and create table rows 
-	for (let i = 0; i < expenses.length; i++) { 
-		const expense = expenses[i]; 
-		const expenseRow = document.createElement("tr"); 
-		expenseRow.innerHTML = ` 
-	<td>${expense.name}</td> 
-	<td>$${expense.amount}</td> 
-	<td class="delete-btn" data-id="${i}">Delete</td> 
-	`; 
-		expenseList.appendChild(expenseRow); 
+    if (expenseName === "" || isNaN(expenseAmount)) {
+        alert("Please enter valid expense details.");
+        return;
+    }
 
-		// Update total amount 
-		totalAmount += expense.amount; 
-	} 
+    const expense = { name: expenseName, amount: expenseAmount };
+    expenses.push(expense);
+    renderExpenses();
+}
 
-	// Update total amount display 
-	totalAmountElement.textContent = 
-		totalAmount.toFixed(2); 
+function deleteExpense(event) {
+    if (event.target.classList.contains("delete-btn")) {
+        const expenseIndex = parseInt(event.target.getAttribute("data-id"));
+        expenses.splice(expenseIndex, 1);
+        renderExpenses();
+    }
+}
 
-	// Save expenses to localStorage 
-	localStorage.setItem("expenses", 
-		JSON.stringify(expenses)); 
-} 
+function updateChart(labels, data) {
+    if (expenseChart) {
+        expenseChart.destroy(); // Destroy the old chart instance before creating new one
+    }
+    const ctx = document.getElementById("expenseChart").getContext('2d');
+    expenseChart = new Chart(ctx, {
+        type: 'pie',
+        data: {
+            labels: labels,
+            datasets: [{
+                label: 'Expenses',
+                data: data,
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.7)',
+                    'rgba(54, 162, 235, 0.7)',
+                    'rgba(255, 206, 86, 0.7)',
+                    'rgba(75, 192, 192, 0.7)',
+                    'rgba(153, 102, 255, 0.7)',
+                    'rgba(255, 159, 64, 0.7)'
+                ],
+                borderColor: [
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(153, 102, 255, 1)',
+                    'rgba(255, 159, 64, 1)'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false
+        }
+    });
+}
 
-// Function to add expense 
-function addExpense(event) { 
-	event.preventDefault(); 
-
-	// Get expense name and amount from form 
-	const expenseNameInput = 
-		document.getElementById("expense-name"); 
-	const expenseAmountInput = 
-		document.getElementById("expense-amount"); 
-	const expenseName = 
-		expenseNameInput.value; 
-	const expenseAmount = 
-		parseFloat(expenseAmountInput.value); 
-
-	// Clear form inputs 
-	expenseNameInput.value = ""; 
-	expenseAmountInput.value = ""; 
-
-	// Validate inputs 
-	if (expenseName === "" || isNaN(expenseAmount)) { 
-		alert("Please enter valid expense details."); 
-		return; 
-	} 
-
-	// Create new expense object 
-	const expense = { 
-		name: expenseName, 
-		amount: expenseAmount, 
-	}; 
-
-	// Add expense to expenses array 
-	expenses.push(expense); 
-
-	// Render expenses 
-	renderExpenses(); 
-} 
-
-// Function to delete expense 
-function deleteExpense(event) { 
-	if (event.target.classList.contains("delete-btn")) { 
-
-		// Get expense index from data-id attribute 
-		const expenseIndex = 
-			parseInt(event.target.getAttribute("data-id")); 
-
-		// Remove expense from expenses array 
-		expenses.splice(expenseIndex, 1); 
-
-		// Render expenses 
-		renderExpenses(); 
-	} 
-} 
-
-// Add event listeners 
-expenseForm.addEventListener("submit", addExpense); 
-expenseList.addEventListener("click", deleteExpense); 
-
-// Render initial expenses on page load 
-renderExpenses();
+expenseForm.addEventListener("submit", addExpense);
+expenseList.addEventListener("click", deleteExpense);
+renderExpenses(); // Render initial expenses on page load
