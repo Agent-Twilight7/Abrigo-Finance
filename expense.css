@@ -1,20 +1,20 @@
-/* style.css */
+
 body { 
     font-family: Arial, sans-serif; 
     margin: 0; 
     padding: 0;
-    height: 100vh;  /* Full viewport height */
+    height: 100vh;  
     display: flex;
-    align-items: center; /* Centers container vertically */
-    justify-content: center; /* Centers container horizontally */
+    align-items: center; 
+    justify-content: center; 
     background: url('bg.jpg') no-repeat center center fixed; 
     background-size: cover;
 }
 
 .container { 
-    width: 90%; /* Adjust width to allow more space */
-    max-width: 1200px; /* Increased max-width */
-    background-color: rgba(0, 0, 0, 0.8); /* Optional: make background slightly transparent to see the image */
+    width: 90%; 
+    max-width: 1200px; 
+    background-color: rgba(0, 0, 0, 0.8); 
     padding: 20px; 
     border-radius: 8px; 
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
@@ -42,7 +42,7 @@ input[type="number"] {
     border: 1px solid #ccc; 
     border-radius: 4px; 
     outline: none; 
-    width: 40%; /* Ensure uniform width */
+    width: 40%; 
 } 
 
 input[type="text"]::placeholder, 
@@ -57,7 +57,7 @@ button {
     border: none; 
     border-radius: 4px; 
     cursor: pointer; 
-    flex-shrink: 0; /* Prevent button from shrinking */
+    flex-shrink: 0; 
 } 
 
 button:hover { 
@@ -108,5 +108,5 @@ tbody td {
 #expenseChart {
     margin-top: 20px;
     width: 100%;
-    max-height: 400px; /* Limit chart height */
+    max-height: 400px; 
 }
