@@ -2,48 +2,48 @@ body {
     font-family: 'Trebuchet MS', Arial, sans-serif;
     margin: 0;
     padding: 0;
-    height: 100vh; /* Full viewport height */
+    height: 100vh; 
     display: flex;
-    align-items: center; /* Centers content vertically */
-    justify-content: center; /* Centers content horizontally */
+    align-items: center; 
+    justify-content: center; 
     background: url('bg.jpg') no-repeat center center fixed; 
     background-size: cover;
 }
 
 h1 {
-    font-size: 24px; /* Adjusted for better visibility on different devices */
+    font-size: 24px; 
     color: white;
-    text-align: center; /* Centers the header text */
-    margin-bottom: 20px; /* Spacing for visual appeal */
+    text-align: center; 
+    margin-bottom: 20px;
 }
 
 .calculator {
     width: 400px;
-    height: auto; /* Height adjusted to auto for content flexibility */
-    background-color: rgba(0, 0, 0, 0.8); /* Semi-transparent black */
-    position: relative; /* Changed to relative for flexbox centering */
-    padding: 20px; /* Uniform padding for a cleaner layout */
-    border-radius: 20px; /* Smoother radius */
+    height: auto; 
+    background-color: rgba(0, 0, 0, 0.8); 
+    position: relative;
+    padding: 20px; 
+    border-radius: 20px; 
     color: white;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Soft shadow for depth */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); 
     display: flex;
     flex-direction: column;
-    align-items: center; /* Aligns children (inputs and labels) centrally */
+    align-items: center; 
 }
 
 input {
     padding: 10px;
-    width: 90%; /* Adjusted to use more of the available width */
-    margin-top: 10px; /* Uniform spacing */
-    background-color: #f9f9f9; /* Light background for the input */
-    border: 1px solid #ccc; /* Subtle border */
-    border-radius: 4px; /* Rounded corners */
-    outline: none; /* Remove outline */
-    color: #333; /* Dark text for readability */
+    width: 90%; 
+    margin-top: 10px; 
+    background-color: #f9f9f9; 
+    border: 1px solid #ccc; 
+    border-radius: 4px; 
+    outline: none; 
+    color: #333; 
 }
 
 h2 {
-    text-align: center; /* Center align the result text */
+    text-align: center; 
     margin-top: 20px;
-    color: limegreen; /* A pop of color for the result */
+    color: limegreen; 
 }
